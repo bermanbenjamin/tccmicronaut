@@ -6,7 +6,6 @@
   <artifactId>tccmicronaut</artifactId>
   <version>0.1</version>
   <packaging>${packaging}</packaging>
-
   <parent>
     <groupId>io.micronaut</groupId>
     <artifactId>micronaut-parent</artifactId>
@@ -98,6 +97,11 @@
       <groupId>io.micronaut.data</groupId>
       <artifactId>micronaut-data-jdbc</artifactId>
     </dependency>
+    <dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
   </dependencies>
 
   <build>
