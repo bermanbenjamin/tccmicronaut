@@ -1,11 +1,12 @@
 package com.tccmicronaut.repository;
 
-import com.tccmicronaut.model.User;
-
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.repository.CrudRepository;
 
+import com.tccmicronaut.model.Follows;
+
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-}
+public interface FollowsRepository extends CrudRepository<Follows, Long> {
+	
+} 

@@ -12,7 +12,7 @@ public class FollowUser {
     }
 
     public void follow(User userFollowed, User userFollower) {
-        userFollowed.getFollowers().add(userFollower.getId());
+       // userFollowed.getFollowers().add(userFollower.getId());
         userService.update(userFollowed);
     }
 

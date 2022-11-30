@@ -9,7 +9,7 @@ import java.util.Date;
 public class HealthController {
 
     @Get
-    String health() {
+    String index() {
         return new Date().toString();
     }
 }

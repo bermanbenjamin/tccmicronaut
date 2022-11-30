@@ -1,6 +1,7 @@
 package com.tccmicronaut.delivery;
 
 import com.tccmicronaut.model.User;
+import com.tccmicronaut.service.FollowsService;
 import com.tccmicronaut.service.UserService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
@@ -9,9 +10,12 @@ import io.micronaut.http.annotation.*;
 public class UserController {
 
     private static UserService userService;
+    
+    private static FollowsService followsService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public UserController(UserService userService, FollowsService followsService) {
+        UserController.userService = userService;
+        UserController.followsService = followsService;
     }
 
 
@@ -21,15 +25,17 @@ public class UserController {
             userService.create(user);
             return HttpResponse.ok();
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
 
     @Get(value = "/{id}")
-    public static HttpResponse<User> get(@PathVariable String id) {
+    public static HttpResponse<User> get(@PathVariable Long id) {
         try {
             return HttpResponse.ok(userService.findById(id));
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
@@ -40,16 +46,18 @@ public class UserController {
             userService.update(user);
             return HttpResponse.ok();
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
 
     @Delete(value = "/delete/{id}")
-    public static HttpResponse delete(@PathVariable String id) {
+    public static HttpResponse delete(@PathVariable Long id) {
         try {
             userService.deleteById(id);
             return HttpResponse.ok();
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
@@ -59,19 +67,31 @@ public class UserController {
         try {
             return HttpResponse.ok(userService.findAll());
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
 
     @Put(value = "/{id}/follow/{idToFollow}")
-    public static HttpResponse follow(@PathVariable String id, @PathVariable String idToFollow) {
+    public static HttpResponse follow(@PathVariable Long id, @PathVariable Long idToFollow) {
         try {
-            userService.follow(id, idToFollow);
+        	followsService.follow(id, idToFollow);
             return HttpResponse.ok();
         } catch (Exception e) {
+        	e.printStackTrace();
             return HttpResponse.badRequest();
         }
     }
 
+    @Get(value = "/follow/find/{id}")
+    public static HttpResponse findFollowers(@PathVariable Long id) {
+        try {
+        	followsService.findFollowers(id);
+            return HttpResponse.ok();
+        } catch (Exception e) {
+        	e.printStackTrace();
+            return HttpResponse.badRequest();
+        }
+    }
 
 }

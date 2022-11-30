@@ -3,7 +3,6 @@ package com.tccmicronaut.model;
 import io.micronaut.data.annotation.GeneratedValue;
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
-import io.micronaut.data.jdbc.annotation.ColumnTransformer;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class User {
 
     @Id
     @GeneratedValue(GeneratedValue.Type.AUTO)
-    private String id;
+    private Long id;
 
     @NotNull
     private String name;
@@ -23,28 +22,27 @@ public class User {
     @NotNull
     private String password;
 
-    private ArrayList<String> posts;
-
-    private ArrayList<String> followers;
+    private Long followers;
 
     private Date birthdate;
+    
+    public User() {}
 
-    public User(String id, String name, String password, ArrayList<String> posts, ArrayList<String> followers,
+    public User(Long id, String name, String password, ArrayList<String> posts, Long followers,
                 Date birthdate) {
         super();
         this.id = id;
         this.name = name;
         this.password = password;
-        this.posts = posts;
         this.followers = followers;
         this.birthdate = birthdate;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -64,19 +62,11 @@ public class User {
         this.password = password;
     }
 
-    public ArrayList<String> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(ArrayList<String> posts) {
-        this.posts = posts;
-    }
-
-    public ArrayList<String> getFollowers() {
+    public Long getFollowers() {
         return followers;
     }
 
-    public void setFollowers(ArrayList<String> followers) {
+    public void setFollowers(Long followers) {
         this.followers = followers;
     }
 
