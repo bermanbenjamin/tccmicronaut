@@ -1,20 +1,22 @@
 package com.tccmicronaut.service;
 
 import com.tccmicronaut.model.Follows;
-import com.tccmicronaut.model.User;
 import com.tccmicronaut.repository.FollowsRepository;
 import com.tccmicronaut.repository.UserRepository;
+
+import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Inject;
 
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
+@Factory
 public class FollowsService {
 
 	private FollowsRepository followsRepository;
 	
+	@Inject
 	private UserRepository userRepository;
 
 	@Inject

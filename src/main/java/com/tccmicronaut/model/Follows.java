@@ -1,16 +1,21 @@
 package com.tccmicronaut.model;
 
-import io.micronaut.data.annotation.GeneratedValue;
-import io.micronaut.data.annotation.Id;
-import io.micronaut.data.annotation.MappedEntity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-@MappedEntity
+import io.micronaut.core.annotation.Introspected;
+
+
+@Entity
+@Introspected
 public class Follows {
 	
 	@Id
-	@GeneratedValue(GeneratedValue.Type.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@NotNull

@@ -3,7 +3,6 @@ package com.tccmicronaut.repository;
 import com.tccmicronaut.model.User;
 
 import io.micronaut.data.annotation.Repository;
-import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.repository.CrudRepository;
 
 @Repository

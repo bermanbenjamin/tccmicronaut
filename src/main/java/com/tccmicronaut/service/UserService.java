@@ -3,8 +3,11 @@ package com.tccmicronaut.service;
 
 import com.tccmicronaut.model.User;
 import com.tccmicronaut.repository.UserRepository;
+
+import io.micronaut.context.annotation.Factory;
 import jakarta.inject.Inject;
 
+@Factory
 public class UserService {
 
     private final UserRepository userRepository;

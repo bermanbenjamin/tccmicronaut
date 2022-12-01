@@ -10,23 +10,20 @@ datasources:
     default:
         url: jdbc:postgresql://localhost:5432/tccspringboot
         username: postgres
-        password: admin
-        driverClassName: org.postgresl.Driver
-        dialect: POSTGRES
+        password: 'admin'
+        driverClassName: org.postgresql.Driver
+        dialect: postgres
+        schema-generate: CREATE_DROP
 
 jpa:
   default:
     entity-scan:
-      packages: 'com.tccmicronaut'
+        packages: 'com.tccmicronaut.model'
     properties:
       hibernate:
-        bytecode:
-          provider: none
         hbm2ddl:
           auto: update
         show_sql: true
         format_sql: true
-  
-          
   
        
